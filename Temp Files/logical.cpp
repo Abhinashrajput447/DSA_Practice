@@ -1,0 +1,15 @@
+#include<iostream>
+using namespace std;
+
+int main() {
+    int a;
+    cout << "Enter one number : ";
+    cin >> a;
+    int sum = 0;
+    for(int i=1;i<=a;i++) {
+        cout << i << endl;
+        sum+=i;
+    }
+    cout << sum << endl;
+    return 0;
+}

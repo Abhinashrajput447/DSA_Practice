@@ -1,0 +1,101 @@
+# OS
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Windows Recycle Bin
+$RECYCLE.BIN/
+
+# Editor / IDE
+.vscode/
+*.code-workspace
+.idea/
+*.iml
+*.iws
+
+# Visual Studio
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# JetBrains / IntelliJ
+out/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+env/
+venv/
+ENV/
+.venv/
+.env
+ipynb_checkpoints/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Java / Maven / Gradle
+target/
+*.jar
+*.war
+*.ear
+
+# Build / Dist
+build/
+dist/
+coverage/
+*.class
+*.o
+*.so
+*.exe
+*.dll
+*.out
+*.app
+
+# C/C++
+*.obj
+*.dbg
+*.stackdump
+
+# Logs and runtime files
+logs/
+*.log
+*.pid
+*.seed
+
+# Package manager lockfiles you may want to keep: comment out if you track them
+# package-lock.json
+# yarn.lock
+
+# Secrets / Keys / Certificates
+*.pem
+*.key
+*.crt
+secrets.*
+*.env.*
+
+# Archives and misc
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Misc caches
+*.cache
+*.local
+.vagrant/
+.sass-cache/
+
+# OneDrive / temporary files
+~$*
+~*.*.tmp
+
+# Allow: any project-specific files you intentionally want to keep should be added/staged explicitly
