@@ -5,8 +5,9 @@ int main() {
   int n;
   cin >> n;
   int arr[n];
-  for(int i=0; i<n; i++) cin >> arr[i];
-
+  for(int i=0; i<n; i++) {
+    cin >> arr[i];
+  }
   if(n < 2) {
     cout << "Array must contain at least two elements\n";
     return 0;
