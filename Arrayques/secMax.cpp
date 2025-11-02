@@ -20,17 +20,20 @@ int main() {
   int max1, max2;
   bool foundSecond = false;
 
-  if (arr[0] > arr[1]) {
-    max1 = arr[0];
-    max2 = arr[1];
-    foundSecond = true;
-  } else if (arr[1] > arr[0]) {
-    max1 = arr[1];
-    max2 = arr[0];
-    foundSecond = true;
-  } else {
-    max1 = arr[0];
-  }
+  max1 = arr[0], max2 = arr[1];  
+  // if (arr[0] > arr[1]) {
+  //   max1 = arr[0];
+  //   max2 = arr[1];
+  //   foundSecond = true;
+  // } else if (arr[1] > arr[0]) {
+  //   max1 = arr[1];
+  //   max2 = arr[0];
+  //   foundSecond = true;
+  // } else {
+  //   max1 = arr[0];
+  // }
+
+  if(arr[0] < arr[1]) swap(max1, max2);
 
   for (int i = 2; i < n; i++) {
     if (arr[i] > max1) {
