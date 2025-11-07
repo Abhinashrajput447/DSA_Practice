@@ -24,6 +24,6 @@ int main() {
   s2.cgpa = 9.5;
   s2.rNo = 21;
   s2.salary = 981000;
-  cout << s2.name << " " << s2.cgpa << " " << s2.rNo << " " << s2.salary;
+  cout << s2.name << " " << s2.cgpa << " " << s2.rNo << " " << s2.salary; 
   return 0;
 }
