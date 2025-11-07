@@ -28,10 +28,18 @@ public:
     speed = sp;
   } 
 
+  Car(int sp, float p, string n, int s, string t) {
+    name = n;
+    price = p;
+    seat = s;
+    type = t;
+    speed = sp;
+  }
+
 };
 
 void print(Car c) {
-  cout << c.name << " " << c.price << " "<< c.type << " " << c.seat << endl;
+  cout << c.name << " " << c.price << " "<< c.type << " " << c.seat << " " << c.speed << endl;
 }
 
 void change(Car& c) {
@@ -53,8 +61,19 @@ int main() {
   // c2.seat = 2;
   // c2.type = "Smd";
 
-  Car c3(99999, "Oddi", "soul", 4);
+  Car c3(99999, "Oddi", "soul", 4, 200);
   print(c3);
+
+  Car c4(200, 400000, "Bugati", 7, "mk");
+  print(c4);
+
+  Car c5 = c3;  // Copy constructor 
+  c5.name = "Abhianash";  // Deep Copy
+  print(c5);
+
+  Car c6(c3);  // Copy Constructor 
+
+  print(c6);  
 
   // cout << c2.name << " " << c2.price << " "<< c2.type << " " << c2.seat << endl;
   return 0;
