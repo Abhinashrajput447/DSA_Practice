@@ -22,9 +22,9 @@ public:
 //   c.avg = 75; 
 // }
 
-void change(Cricketer* c) {  // Using Pointer
+void change(Cricketer& c) {  // Using Pointer
   // (*c).avg = 75; 
-  c -> avg = 47;
+  c.avg = 47;
   // c.avg = 45;   // false
 }
 
@@ -38,9 +38,9 @@ int main() {
 
   // (*p).name = "Life-sync";
   // cout << p -> runs << "\n";
-  // change(c1);
+  change(c1);
 
-  cout << (*c1).avg;
+  cout << c1.avg << endl;
   // c1.print();
   // p -> print();
   return 0;
