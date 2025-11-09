@@ -20,6 +20,9 @@ public:
     return cgpa;
   }
 
+  void setCgpa(float m) {
+    cgpa = m;
+  }
 private:
   float cgpa;
 };
@@ -35,6 +38,7 @@ private:
 int main() {
   Student s1("Abhinash",21, 9.7);
   Student s2(s1);
+  s1.setCgpa(9.8);
 
   s2.rNo = 88;
 
