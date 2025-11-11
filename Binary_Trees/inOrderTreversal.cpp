@@ -14,7 +14,9 @@ public:
   }
 };
 
-static int idx = -1;
+static int idx = -1;   
+/*if you don't want to use static so remove static 
+and do pass by reference*/
 Node* buildTree(vector<int> preorder) {   // TC => O(1)
   idx++;
 
