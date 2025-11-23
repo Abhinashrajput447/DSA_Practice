@@ -2,7 +2,7 @@
 #include<limits>
 using namespace std;
 
-int maxProfit(int *arr, int n) {
+int maxProfit(int *arr, int n) {  // TC => O(n)
   int bestBuy = arr[0];
   int maxPro = 0;
 
@@ -16,8 +16,8 @@ int maxProfit(int *arr, int n) {
   return maxPro;
 }
 
-int maxProfit2(int *arr, int n) {
-  int bestBuy[100000];
+int maxProfit2(int *arr, int n) {  // TC => O(2n)
+  int bestBuy[100000]; 
   bestBuy[0] = INT32_MAX;
   int maxProfit = 0;
 
