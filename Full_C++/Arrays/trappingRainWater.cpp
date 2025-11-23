@@ -23,10 +23,29 @@ int trap(int *height, int n) {
   return waterTraped;
 }
 
+int trap2(int *height , int n) {
+  int l = 0, r = n-1;
+  int lmax = height[0], rmax = height[n-1];
+  int water = 0;
+  while(l < r) {
+    lmax = max(lmax, height[l]);
+    rmax = max(rmax, height[r]);
+
+    if(lmax<rmax) {
+      water += lmax - height[l];
+      l++;
+    }else{
+      water += rmax - height[r];
+      r--;
+    }
+  }
+  return water;
+}
+
 int main() {
   int n = 7;
   int height[n] = {4, 2, 0, 6, 3, 2, 5};
 
-  cout << trap(height, n);
+  cout << trap2(height, n);
   return 0;
 }
