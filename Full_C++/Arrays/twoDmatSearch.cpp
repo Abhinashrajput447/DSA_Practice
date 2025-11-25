@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-bool search(int matrix[][4], int n, int m, int target) {
+bool search(int matrix[][4], int n, int m, int target) { // we can use matrix[][4] = (*matrix[4])
   int row = 0, col = n-1;
 
   while(row < m && col >= 0) {
