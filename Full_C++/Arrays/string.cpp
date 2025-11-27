@@ -71,11 +71,41 @@ bool validPalindrome(char word[], int n) {
   // return strcmp(word1, word) == 0;
 }
 
+bool anagram(string s, string t) {
+  if(s.length() != t.length()) return false;
 
+  // sort(s.begin(), s.end());
+  // sort(t.begin(), t.end());
+
+  int count[26] = {0};
+  for(int i=0; i<s.length(); i++) {
+    int idx = s[i] - 'a';
+    count[idx]++;
+  }
+  
+  for(int i=0; i<t.length(); i++) {
+    int idx = s[idx] - 'a';
+    if(count[idx] == 0) {
+      return false;
+    }
+    count[idx]++;
+  }
+  return true;
+}
+
+void compare(string s1, string s2) {
+  
+}
 
 int main() {
-  char word[] = "racecar";
-  int n = strlen(word);
-  cout << validPalindrome(word, n);
-  // cout << word;
+  // char word[] = "racecar";
+  // int n = strlen(word);
+  // cout << validPalindrome(word, n);
+
+  string s = "anagram";
+  string t = "dog";
+
+  cout << anagram(s, t);
+  // cout << s.substr(1, 5);
+  // cout << s.find("n");
 }
