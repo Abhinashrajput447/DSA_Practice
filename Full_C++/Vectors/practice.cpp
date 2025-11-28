@@ -78,9 +78,23 @@ void holoPyramid(int n) {
   }
 }
 
+
+void zeroOneTraingle(int n) {
+  for(int i=1; i<=n; i++) {
+    for(int j=1; j<=i; j++) {
+      if((i+j) % 2 != 0) {
+        cout << true;
+      }else{
+        cout << false;
+      }
+    }
+    cout << endl;
+  }
+}
+
 int main() {
   int n, m;
   cin >>  n >> m;
-  holoPyramid(n);
+  zeroOneTraingle(n);
   return 0;
 }
