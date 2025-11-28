@@ -2,7 +2,8 @@
 #include <chrono>
 using namespace std;
 
-int main() {
+int main()
+{
     auto start = chrono::high_resolution_clock::now();
 
     int n;
@@ -22,26 +23,31 @@ int main() {
     // int n;
     // cin >> n;
 
-    // int c3 = 0, c5 = 0;
+    int c3 = 0, c5 = 0;
 
-    for(int i = 1; i <= n; i++) {
+    for (int i = 1; i <= n; i++)
+    {
         c3++;
         c5++;
 
-        if(c3 == 3 && c5 == 5) {
+        if (c3 == 3 && c5 == 5)
+        {
             // cout << "fizzbuzz" << endl;
             c3 = 0;
             c5 = 0;
         }
-        else if(c5 == 5) {
+        else if (c5 == 5)
+        {
             // cout << "buzz" << endl;
             c5 = 0;
         }
-        else if(c3 == 3) {
+        else if (c3 == 3)
+        {
             // cout << "fizz" << endl;
             c3 = 0;
         }
-        else {
+        else
+        {
             // cout << i << endl;
         }
     }
