@@ -9,8 +9,7 @@ void func() {
   return;
 }
 
-int main() {
-  // func();
+void func2() {
   int size;
   cin >> size;
 
@@ -22,5 +21,16 @@ int main() {
     a++;
   }
   cout << endl << size;
+  delete [] arr; // free space
+}
+
+void func3() {
+  int *ptr = new int;
+  *ptr = 5;
+  cout << *ptr;
+  delete ptr;
+}
+int main() {
+  func3();
   
 }
