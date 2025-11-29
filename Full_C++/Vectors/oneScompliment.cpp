@@ -20,6 +20,10 @@ int clearIthBit(int n, int i) {
   return (n & bitMask);
 }
 
+bool powerOf2(int n) {
+  return(n&(n-1))== 0;
+}
+
 void oddOrEven(int n) {
   if(n & 1) {
     cout << "odd"; 
@@ -29,6 +33,6 @@ void oddOrEven(int n) {
 }
 
 int main() {
-  cout << clearIthBit(6, 1) << endl;
+  cout << powerOf2(4) << endl;
   return 0;
 }
