@@ -105,12 +105,59 @@ int reverse(int n, int rev = 0) {
   return reverse(n / 10, rev * 10 + n % 10);
 }
 
+bool anagrams(string s1, string s2) {
+  int n = s1.length(), m = s2.length();
+  unordered_map<char, int> freq;
+
+  for(char c : s1) {
+    freq[c]++;
+  }
+
+  for(char c : s2) {
+    freq[c]--;
+  }
+
+  for(auto &p : freq) {
+    if(p.second != 0) return false;
+  }
+
+  return true;
+}
+
+int cntFreq(int *arr, int n) {
+  unordered_map<int, int> freq;
+
+  for(int i=0; i<n; i++) {
+    freq[arr[i]]++;
+  } 
+  return freq[3];
+}
+
+void cntFreqOfEachEle(int *arr, int n) {
+  unordered_map<int, int> freq;
+
+  for(int i=0; i<n; i++) {
+    freq[arr[i]]++;
+  }
+
+  for(auto &x : freq) {
+    cout << x.first << " " << x.second  << endl;
+  }
+}
+
+
+
 int main() {
-  int n = 5;
-  int arr[n] = {1,22 , 3, 14, 5};
+  int n = 6;
+  int arr[n] = {1, 2, 3, 4, 5};
+
+  cntFreqOfEachEle(arr, n);
+  // cout << cntFreq(arr, n);
+
+  // cout << anagrams("abhi", "ai");
   // string s;
   // getline(cin, s);
 
-  cout << reverse(45);
+  // cout << reverse(45);
   return 0;
 }
