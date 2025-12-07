@@ -105,10 +105,37 @@ double power2(double x, int n) {
 
   return halfPowSqure;
 }
-int main() {
-  // vector<int> arr = {1, 2, 3, 3, 3, 4};
-  // cout << lastOccurence(arr, arr.size(), 0, 3);
 
-  cout << power2(15,9);
+void binStr(int n, int lastPlace, string ans) {
+  if(n == 0) {
+    cout << ans << "\n";
+    return;
+  }
+
+  if(lastPlace) {
+    binStr(n-1, 0, ans + '0');
+  }else {
+    binStr(n-1, 0, ans + '0');
+    binStr(n-1, 1, ans + '1');
+  }
+}
+
+void binStr2(int n, string ans) {
+  if(n == 0) {
+    cout << ans << "\n";
+    return;
+  }
+
+  if(ans[ans.size()-1] != '1') {
+    binStr2(n-1, ans + '0');
+    binStr2(n-1, ans + '1');
+  }else{
+    binStr2(n-1, ans + '0');
+  }
+
+}
+int main() {
+  string ans = "";
+  binStr2(4, ans);
   return 0;
 }
