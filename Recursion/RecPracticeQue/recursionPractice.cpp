@@ -163,8 +163,20 @@ void binStr4(int n, string ans) {
   }
 }
 
+int binSearch(int *arr, int st, int end, int key) {
+  int mid = st + (end-st)/2;
+  if(arr[mid] == key) {
+    return mid;
+  }else if(arr[mid] > key) {
+    binSearch(arr, st, mid-1, key);
+  }else{
+    binSearch(arr, mid+1, end, key);
+  }
+}
+
 int main() {
-  string ans = "";
-  binStr4(3, ans);
+  int arr[7] = {1, 2, 3, 4, 5, 6, 7};
+  int n = 7;
+  cout << binSearch(arr, 0, n-1, 1);
   return 0;
 }
