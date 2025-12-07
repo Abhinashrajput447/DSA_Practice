@@ -134,8 +134,37 @@ void binStr2(int n, string ans) {
   }
 
 }
+
+void binStr3(int n, int lastNum, string ans) {
+  if(n == 0) {
+    cout << ans << "\n";
+    return;
+  }
+
+  if(lastNum == 0) {
+    binStr3(n-1, 1, ans + '1');
+  }else {
+    binStr3(n-1, 1, ans + '1');
+    binStr3(n-1, 0, ans + '0');
+  }
+}
+
+void binStr4(int n, string ans) {
+  if(n == 0) {
+    cout << ans << endl;
+    return;
+  }
+
+  if(ans[ans.size()-1] == '0') {
+    binStr4(n-1, ans + '1');
+  }else {
+    binStr4(n-1, ans + '0');
+    binStr4(n-1, ans + '1');
+  }
+}
+
 int main() {
   string ans = "";
-  binStr2(4, ans);
+  binStr4(3, ans);
   return 0;
 }
