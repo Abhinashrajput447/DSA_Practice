@@ -174,6 +174,7 @@ int binSearch(int *arr, int st, int end, int key) {
   }
 }
 
+
 int main() {
   int arr[7] = {1, 2, 3, 4, 5, 6, 7};
   int n = 7;
