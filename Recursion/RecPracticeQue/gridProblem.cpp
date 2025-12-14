@@ -18,8 +18,20 @@ int ways(int row, int col, int n, int m, string ans) { // TC => 2^(n+m)
   return v1+v2;
 }
 
+int fact(int n) {
+  if(n == 1) return 1;
+  return n * fact(n-1);
+}
+
+int ways2(int n, int m) {
+  int p = fact((n-1) + (m-1));
+  int q = fact(n-1)*fact(m-1);
+  return p/q;
+}
+
 int main() {
-  string ans;
-  cout << ways(0, 0, 4, 4, ans);
+  // string ans;
+  cout << ways2(2, 1);
+  // cout << fact(5);
   return 0;
 }
