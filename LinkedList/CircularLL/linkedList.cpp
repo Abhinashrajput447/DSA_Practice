@@ -124,6 +124,53 @@ public:
     delete tail;
     tail = temp;
   }
+
+  int searchIterative(int val) { // TC => O(n)
+    Node* temp = head;
+    int idx = 0;
+
+    while(temp != NULL) {
+      if(temp->data == val) {
+        return idx;
+      }
+      idx++;
+      temp = temp -> next;
+    }
+    return -1;
+  }
+
+  int helper(Node* temp, int key) {
+    if(temp == NULL) {
+      return -1;
+    }
+
+    if(temp -> data == key) {
+      return 0;
+    }
+
+    int idx = helper(temp -> next, key);
+    if(idx == -1) {
+      return -1;
+    }
+    return idx+1;
+  }
+
+  int searchRecc(int key) {
+    return helper(head, key);
+  }
+
+  void reverseLL() {
+    Node* prev = NULL;
+    Node* curr = head;
+
+    while(curr != NULL) {
+      Node* next = curr -> next;
+      curr -> next = prev;
+      prev = curr;
+      curr = next;
+    }
+    head = prev;
+  }
 };
 
 
@@ -133,9 +180,8 @@ int main() {
   ll.push_back(20);
   ll.push_back(10);
   ll.push_back(5);
-  // ll.push_back(10);
-  // ll.insert(100, 2);
-  ll.pop_back();
+  ll.printList();
+  ll.reverseLL();
   ll.printList();
   return 0;
 }
