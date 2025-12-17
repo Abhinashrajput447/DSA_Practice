@@ -85,9 +85,14 @@ void str(string s, int n) {
   str(s, n-1);
 }
 
+int wave(int arr[]) {
+  int n = sizeof(arr) / sizeof(arr[0]);
+
+  return n;
+}
+
 int main() {
-  string s = "Abhi";
-  int n = s.length();
-  str(s, n);
+  int arr[] = {3, 2,1, 4, 5};
+  cout << wave(arr);
   return 0;
 }
