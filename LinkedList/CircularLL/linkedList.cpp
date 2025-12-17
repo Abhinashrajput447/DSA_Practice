@@ -171,6 +171,29 @@ public:
     }
     head = prev;
   }
+
+  int getSize() {
+    Node* temp = head;
+    int sz = 0;
+
+    while(temp != NULL) {
+      temp = temp-> next;
+      sz++;
+    }
+    return sz;
+  }
+
+  void removeNth(int n) { // TC => O(n)
+    int size1 = getSize();
+    Node* temp = head;
+
+    Node* prev = head;
+    for(int i=1; i<(size1-n); i++) {
+      prev = prev -> next;
+    } 
+    cout << "deleting = " << prev -> next-> data << endl;
+    prev -> next = prev -> next -> next;
+  }
 };
 
 
@@ -180,8 +203,8 @@ int main() {
   ll.push_back(20);
   ll.push_back(10);
   ll.push_back(5);
-  ll.printList();
-  ll.reverseLL();
+  // cout << ll.getSize();
+  ll.removeNth(2);
   ll.printList();
   return 0;
 }
