@@ -65,14 +65,33 @@ public:
 
     cout << "NULL\n";
   }
+
+  void insert(int val, int pos) {
+    Node* newNode = new Node(val);
+
+    Node* prev = head;
+    for(int i=0; i<pos-1; i++) {
+      if(prev == NULL) {
+        cout << "LL is Invalid \n";
+        return;
+      }
+      prev = prev -> next;
+    }
+    
+    newNode -> next = prev -> next;
+    prev -> next = newNode;
+  }
 };
 
 
 int main() {
   List ll;
-  ll.push_back(3);
-  ll.push_back(2);
-  ll.push_back(1);
+  ll.push_back(30);
+  ll.push_back(20);
+  ll.push_back(10);
+  ll.push_back(5);
+  ll.push_back(10);
+  ll.insert(100, 2);
   ll.printList2();
   return 0;
 }
