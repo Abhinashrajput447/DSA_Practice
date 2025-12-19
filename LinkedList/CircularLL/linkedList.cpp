@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <list>
+#include <iterator>
 using namespace std;
 
 class Node {
@@ -194,17 +196,119 @@ public:
     cout << "deleting = " << prev -> next-> data << endl;
     prev -> next = prev -> next -> next;
   }
+
+  bool isPalindrome() {
+    vector<int> vals;
+
+    for(Node* p=head; p!=nullptr; p=p->next) {
+      vals.push_back(p->data);
+    }
+
+    int i=0, n=vals.size(), j=n-1;
+    if(n == 1) return true;
+    cout << "p";
+
+    while(i < j) {
+      if(vals[i] != vals[j]) {
+        return false;
+      }
+      i++;j--;
+    }
+    return true;
+  }
 };
 
+bool cycle(Node* head) {
+  Node* slow = head;
+  Node* fast = head;
+
+  while(fast != NULL && fast->next != NULL) {
+    slow = slow -> next; // increse => 1
+    fast = fast -> next -> next;  // increse => 2
+
+    if(slow == fast) {
+      return true;
+    }
+  }
+  return false;
+}
+
+void removeCycle(Node* head) {
+  Node* slow = head;
+  Node* fast = head;
+  bool isCycle = false;
+  while(fast != NULL && fast -> next != NULL) {
+    slow = slow -> next; // +1
+    fast = fast -> next -> next; // +2
+
+    if(slow == fast) {
+      cout << "Cycle exists\n";
+      isCycle = true;
+      break;
+    }
+  }
+
+  if(!isCycle) {
+    cout << "Cycke not Exist\n";
+    return;
+  }
+
+  slow = head;
+  if(slow == fast) {
+    while(fast -> next != slow) {
+      fast = fast -> next;
+    }
+    fast -> next = nullptr;
+  }else{
+    Node* prev = NULL;
+    while(slow != fast) {
+      slow = slow -> next;
+      prev = fast;
+      fast = fast -> next;
+    }
+    prev -> next = nullptr; // remove cycle 
+  }
+}
+
+void removeElements(Node* head, int val) {
+  Node* curr = head;
+
+  Node* prev = NULL;
+  while(curr != NULL) {
+      if(curr -> data == val) {
+          prev -> next = curr -> next;
+          curr = curr -> next;
+      }else{
+          prev = curr;
+          curr = curr -> next;
+      } 
+      
+  }
+
+}
+
+void printList(list<int> ll) {
+  list<int> :: iterator itr;
+    for(itr=ll.begin(); itr!=ll.end(); itr++) {
+      cout << (*itr) << " -> ";
+    }
+    cout << "NULL" << endl;
+}
 
 int main() {
-  List ll;
-  ll.push_back(30);
-  ll.push_back(20);
-  ll.push_back(10);
-  ll.push_back(5);
-  // cout << ll.getSize();
-  ll.removeNth(2);
-  ll.printList();
+  list<int> ll; // like vector type 
+  ll.push_back(4);
+  ll.push_front(3);
+  ll.push_back(4);
+  ll.push_front(5);
+  // printList(ll);
+  // auto itr = ll.begin();
+  // advance(itr, 2);
+  // ll.insert(itr, 400);
+  // cout << ll.size() << endl;
+  // printList(ll);
+  ll.pop_back();
+  printList(ll);
+  cout << ll.back();
   return 0;
 }
