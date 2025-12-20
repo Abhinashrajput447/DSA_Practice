@@ -355,16 +355,80 @@ Node* mergeSort(Node* head) {
   return merge(left, right); // head of sorted ll 
 }
 
+Node* splitAtMidd(Node* head) {
+  Node* slow = head;
+  Node* fast = head;
+  Node* prev = NULL;
+
+  while(fast != NULL && fast -> next != NULL) {
+    prev = slow;
+    slow = slow -> next;
+    fast = fast -> next -> next;
+  }
+
+  if(prev != NULL) {
+    prev -> next = NULL;
+  }
+
+  return slow;  
+}
+
+Node* reverse(Node* rightHead) {
+  Node* prev = NULL;
+  Node* curr = rightHead;
+
+  while(curr != NULL) {
+    Node* next = curr -> next;
+    curr -> next = prev;
+    prev = curr;
+    curr = next;
+  }
+
+  return prev;
+}
+
+Node* zigZagLL(Node* head) {
+
+  Node* rightHead = splitAtMidd(head);
+  Node* rightHeadRev = reverse(rightHead);
+
+  // alternate merging
+  Node* left = head;
+  Node* right = rightHeadRev;
+  Node* tail = right;
+
+  while(left != NULL && right != NULL) {
+    Node* leftNext = left -> next;
+    Node* rightNext = right -> next;
+
+    left -> next = right;
+    right -> next = leftNext;
+
+    tail = right;
+
+    left = leftNext;
+    right = rightNext;
+  }
+
+  if(right != NULL) { // for odd size LL
+    tail -> next = right;
+  }
+
+  return head;
+}
+
 int main() {
   List ll;
   ll.push_back(1);
-  ll.push_back(12);
+  ll.push_back(2);
   ll.push_back(3);
-  ll.push_back(14);
+  ll.push_back(4);
   ll.push_back(5);
 
-  // ll.printList();
-  ll.head = mergeSort(ll.head);
   ll.printList();
+  ll.head = zigZagLL(ll.head);
+  // ll.printList();
+  ll.printList();
+  
   return 0;
 }
