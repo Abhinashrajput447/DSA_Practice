@@ -15,13 +15,13 @@ public:
     this -> next = NULL;
   }
 
-  ~Node() { // destrcutor for Node because we created here next using poinr by dynamic memory allocation 
-    if(next != NULL) {
-      // cout << "~Node " << data << endl;
-      delete next;
-      next = NULL;
-    }
-  }
+  // ~Node() { // destrcutor for Node because we created here next using poinr by dynamic memory allocation 
+  //   if(next != NULL) {
+  //     // cout << "~Node " << data << endl;
+  //     delete next;
+  //     next = NULL;
+  //   }
+  // }
 };
 
 class List {
@@ -34,13 +34,13 @@ public:
     tail = NULL;
   }
 
-  ~List() { // destructor for deleting dynamic mem created 
-    // cout << "~list \n"; 
-    if(head != NULL) {
-      delete head;
-      head = NULL;
-    }
-  }
+  // ~List() { // destructor for deleting dynamic mem created 
+  //   // cout << "~list \n"; 
+  //   if(head != NULL) {
+  //     delete head;
+  //     head = NULL;
+  //   }
+  // }
 
   void push_front(int val) {
     Node* newNode = new Node(val); // dyncamic
@@ -295,20 +295,76 @@ void printList(list<int> ll) {
     cout << "NULL" << endl;
 }
 
+// merger sort algoritham / merge two list
+
+Node* splitAtMid(Node* head) {
+  Node* slow = head;
+  Node* fast = head;
+  Node* prev = NULL;
+
+  while(fast != NULL && fast -> next != NULL) { 
+    prev = slow;
+    slow = slow -> next;
+    fast = fast -> next -> next;
+  }
+
+  if(prev != NULL) { // for small node kile if list has only one node
+    prev -> next = NULL; // split at middle
+  }
+
+  return slow; // slow = rightHead
+}
+
+Node* merge(Node* left, Node* right) {
+  List ans;
+  Node* i = left;
+  Node* j = right;
+
+  while( i != NULL && j != NULL) {
+    if(i->data <= j -> data) {
+      ans.push_back(i -> data);
+      i = i -> next;
+    }else{
+      ans.push_back(j -> data);
+      j = j -> next;
+    }
+  }
+
+  while(i != NULL) {
+    ans.push_back(i -> data);
+    i = i -> next;
+  }
+
+  while(j != NULL) {
+    ans.push_back(j -> data);
+    j = j -> next;
+  }
+
+  return ans.head;
+}
+
+Node* mergeSort(Node* head) {
+  if(head == nullptr || head -> next == nullptr) {
+    return head;
+  }
+  Node* rightHead = splitAtMid(head);
+
+  Node* left = mergeSort(head);
+  Node* right = mergeSort(rightHead);
+
+  return merge(left, right); // head of sorted ll 
+}
+
 int main() {
-  list<int> ll; // like vector type 
-  ll.push_back(4);
-  ll.push_front(3);
-  ll.push_back(4);
-  ll.push_front(5);
-  // printList(ll);
-  // auto itr = ll.begin();
-  // advance(itr, 2);
-  // ll.insert(itr, 400);
-  // cout << ll.size() << endl;
-  // printList(ll);
-  ll.pop_back();
-  printList(ll);
-  cout << ll.back();
+  List ll;
+  ll.push_back(1);
+  ll.push_back(12);
+  ll.push_back(3);
+  ll.push_back(14);
+  ll.push_back(5);
+
+  // ll.printList();
+  ll.head = mergeSort(ll.head);
+  ll.printList();
   return 0;
 }
