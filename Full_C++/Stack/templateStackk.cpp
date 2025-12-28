@@ -30,13 +30,11 @@ public:
 
 };
 
-
-
 int main() {
-  Stack<char> s;
-  s.push('a');
-  s.push('b');
-  s.push('c');
+  Stack<string> s;
+  s.push("abhinash");
+  s.push("bittu");
+  s.push("cute");
 
   while(!s.isEmpty()) {
     cout << s.top() << " ";
