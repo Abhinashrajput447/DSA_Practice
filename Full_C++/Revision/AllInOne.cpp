@@ -72,8 +72,19 @@ double powOfXToN(double x, int n) {
   return ans;
 }
 
+void array(int arr[]) {
+  cout << arr[0] << " " << arr[1] << " ";
+
+  int temp = arr[0];
+  arr[0] = arr[1];
+  arr[1] = temp;
+
+  cout << arr[0] << " " << arr[1] << " ";
+}
+
 int main() {
-  
-  cout << powOfXToN(2, -4);
+  int arr[5] = {1, 2, 3, 4, 5};
+  array(arr);
+  cout << arr[0] << " " << arr[1] << " ";
   return 0;
 }
