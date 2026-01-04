@@ -82,9 +82,28 @@ void array(int arr[]) {
   cout << arr[0] << " " << arr[1] << " ";
 }
 
+int waysToSplitArray(vector<int>& nums) {
+  int n = nums.size();
+  long long leftSum = 0;
+  long long totalSum = 0;
+
+  for(int i=0; i<n; i++) {
+    totalSum += nums[i];
+  }
+
+  int cnt = 0;
+  for(int i=0; i<n-1; i++) {
+    leftSum += nums[i];
+
+    if(leftSum >= (totalSum - leftSum)) {
+      cnt++;
+    }
+  }
+  return cnt;
+}
+
 int main() {
-  int arr[5] = {1, 2, 3, 4, 5};
-  array(arr);
-  cout << arr[0] << " " << arr[1] << " ";
+  vector<int> nums = {5, 4, 5, -5, 8, 2};
+  cout << waysToSplitArray(nums);
   return 0;
 }
