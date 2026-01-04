@@ -13,10 +13,13 @@ public:
 };
 
 class List {
+public:
     Node* head;
     Node* tail;
+    Node* next;
 
-public:
+    // List(int val)
+
     List() {
         head = tail = NULL;
     }
@@ -41,6 +44,17 @@ public:
         cout <<"NULL" <<endl;
     }
 };
+
+
+List* splitAtMiddle(List* head) {
+    List* prev = NULL;
+    List* slow = head;
+    List* fast = head;
+
+    while(fast != NULL && fast -> next != NULL) {
+        
+    }
+}
 
 int main() {
     List ll;
