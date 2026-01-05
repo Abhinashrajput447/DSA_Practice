@@ -102,8 +102,42 @@ int waysToSplitArray(vector<int>& nums) {
   return cnt;
 }
 
+int sqrt(int n) {
+  int st = 0, end = n;
+
+  int ans = -1;
+  while(st <= end) {
+    int mid = st+(end-st)/2;
+
+    if(mid*mid <= n) {
+      ans = mid;
+      st = mid+1;
+    }else{
+      end = mid-1;
+    }
+  }
+  return ans;
+}
+
+bool sumOfSqureNum(int n) {
+  int a = 0, b = sqrt(n);
+
+  while(a <= b) {
+    int sum = a*a + b*b;
+
+    if(sum == n) {
+      return true;
+    }else if(sum < n) {
+      a++;
+    }else{
+      b--;
+    }
+  }
+  return false;
+}
+
 int main() {
-  vector<int> nums = {5, 4, 5, -5, 8, 2};
-  cout << waysToSplitArray(nums);
+  cout << sumOfSqureNum(32) << endl;
+  cout << sqrt(32) << endl;
   return 0;
 }
