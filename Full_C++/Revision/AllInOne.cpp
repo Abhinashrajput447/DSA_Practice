@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <algorithm>
 using namespace std;
 
 int binToDec(int n) {
@@ -136,8 +137,37 @@ bool sumOfSqureNum(int n) {
   return false;
 }
 
+void moveZero(vector<int>& nums) {
+  int n = nums.size();
+  vector<int> v;
+  // vector<int> ans;
+  int cnt = 0;
+
+  for(int i=0; i<n; i++) {
+    if(nums[i] == 0) {
+      cnt++;
+      v.push_back(nums[i]);
+    }
+  }
+
+  for(int i=0; i<n; i++) {
+    if(nums[i] != 0) {
+      v.push_back(nums[i]);
+    }
+  }
+
+  // reverse(nums.begin(), nums+k);
+  for(int i=0; i<v.size(); i++) {
+    // ans.push_back(v[i]);
+  }
+
+  for(int i=v.size()-1; i>=0; i--) {
+    cout << v[i] << " ";
+  }
+}
+
 int main() {
-  cout << sumOfSqureNum(32) << endl;
-  cout << sqrt(32) << endl;
+  vector<int> nums = {4, 6, 0, 5, 2, 0, 0, 7};
+  moveZero(nums);
   return 0;
 }
