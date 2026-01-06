@@ -247,9 +247,37 @@ int searchInRotSorArr(vector<int>& nums, int tar) {
   return -1;
 }
 
+int unique(vector<int>& nums) {
+  int n = nums.size();
+  // if(n == 0) return;
+  vector<int> vec;
+  vec.push_back(nums[0]);
+  for(int i=1; i<n; i++) {
+    if (nums[i] != nums[i - 1]) {
+            vec.push_back(nums[i]);
+        }
+  }
+
+  int m = vec.size();
+        int minimum = INT32_MAX;
+        int st = 0, end = m-1;
+
+        while(st <= end) {
+            int mid = st+(end-st)/2;
+            return mid;
+            minimum = min(minimum, nums[mid]);
+
+            if(nums[mid] >= nums[end]){
+              st = mid+1;
+            }else{
+              end = mid-1;
+            }
+        }
+        return minimum;
+}
 
 int main() {
-  vector<int> nums = {7,8,9,10,10,1,2,3};
-  cout << searchInRotSorArr(nums, 11);
+  vector<int> nums = {2,2,2,0,1};
+  unique(nums);
   return 0;
 }
