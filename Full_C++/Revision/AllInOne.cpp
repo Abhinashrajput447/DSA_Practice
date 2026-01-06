@@ -166,8 +166,37 @@ void moveZero(vector<int>& nums) {
   }
 }
 
+void sellSOrt(vector<int>& nums) {
+  int n = nums.size();
+  int mid = n/2;
+  for(int i=0; i<n; i++) {
+    for(int j=mid; j<n; j++) {
+      if(nums[i] > nums[j]) {
+        swap(nums[i], nums[j]);
+      }
+    }
+  }
+  mid = mid/2;
+
+  for(int i=0; i<n; i++) {
+    cout << nums[i] << " ";
+  }
+} 
+
+int sumOfSpeSqNo(vector<int>& nums) {
+  int n = nums.size();
+  int ans = 0;
+  for(int i=1; i<=n; i++) {
+    if(n % i == 0) {
+      ans += nums[i-1]*nums[i-1];
+      cout << ans << " ";
+    }
+  }
+  return ans;
+}
+
 int main() {
-  vector<int> nums = {4, 6, 0, 5, 2, 0, 0, 7};
-  moveZero(nums);
+  vector<int> nums = {4, 6, 0, 5, 6, 7, 5};
+  cout << sumOfSpeSqNo(nums);
   return 0;
 }
