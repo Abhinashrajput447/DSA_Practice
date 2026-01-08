@@ -288,8 +288,49 @@ void bubbleSort(vector<int>& nums) {
   }
 }
 
+void result(int nums[], int n) {
+  int tSum = 0;
+  for(int i=0; i<n; i++) {
+    tSum += nums[i];
+  }
+
+  cout << tSum << endl;
+
+  int avg = tSum/n;
+
+  cout << avg << endl;
+
+  int min = INT32_MAX;
+  int minIdx = -1;
+  for(int i=0; i<n; i++) {
+    if(nums[min] >= nums[i]) {
+      min = i;
+      minIdx = i;
+    }
+  }
+  cout << "min idx : "<< minIdx << endl;
+
+  int max = INT32_MIN;
+  int maxIdx = -1;
+  for(int i=0; i<n; i++) {
+    if(nums[max] <= nums[i]) {
+      max = i;
+      maxIdx = i;
+    }
+  }
+
+  // cout << minIdx << endl;
+  cout << "max idx : "<<maxIdx << endl;
+}
+
 int main() {
-  vector<int> nums = {2,2,2,0,1};
-  bubbleSort(nums);
+  int n;
+  cin >> n;
+  int nums[n];
+  for(int i=0; i<n; i++) {
+    cin >> nums[i];
+  }
+
+  result(nums, n);
   return 0;
 }
