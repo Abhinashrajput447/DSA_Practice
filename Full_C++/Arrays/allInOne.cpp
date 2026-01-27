@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <set>
 #include <unordered_set>
 #include <algorithm>
 using namespace std;
@@ -119,13 +120,40 @@ vector<int> rotateNonneg(vector<int>& nums, int k) {
   return nums;
 }
 
-int main() {
-  vector<int> nums = {-1, 5, -8, 6, -9, -9};
-  
-  // vector<int> ans = rotate(nums);
-  rotateNonneg(nums, 7);
+vector<vector<int>> threeSum(vector<int>& nums) {
+  int n = nums.size();
+  vector<vector<int>> ans;
 
-  for(auto x : nums) {
-    cout << x << " ";
+  set<vector<int>> s;
+  for(int i=0; i<n; i++) {
+    for(int j=i+1; j<n; j++) {
+      for(int k=j+1; j<n; j++) {
+        if(nums[i]+nums[j]+nums[k] == 0) {
+          vector<int> trip = {nums[i], nums[j], nums[k]};
+          sort(trip.begin(), trip.end());
+
+
+          if(s.find(trip) == s.end()) {
+            s.insert(trip);
+            ans.push_back(trip);
+          }
+        }
+      }
+    }
   }
+  return ans;
+}
+
+int main() {
+  vector<int> nums = {-1,0, 1, 2, -1, -4};
+  
+  vector<vector<int>> ans = threeSum(nums);
+
+  for(auto &triplet : ans) {
+    for(int x : triplet) {
+      cout << x << " ";
+    }
+    cout << endl;
+  }
+  return 0;
 }
