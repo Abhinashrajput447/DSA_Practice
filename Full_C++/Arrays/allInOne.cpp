@@ -144,16 +144,63 @@ vector<vector<int>> threeSum(vector<int>& nums) {
   return ans;
 }
 
-int main() {
-  vector<int> nums = {-1,0, 1, 2, -1, -4};
-  
-  vector<vector<int>> ans = threeSum(nums);
+vector<vector<int>> threeSum2(vector<int>& nums) {
+  int n = nums.size();
+  set<vector<int>> uniqueTrip;
 
-  for(auto &triplet : ans) {
-    for(int x : triplet) {
-      cout << x << " ";
+  for(int i=0; i<n; i++) {
+    int tar = -nums[i];
+    set<int> s;
+
+    for(int j=i+1; j<n; j++) {
+      int trird = tar - nums[j];
+
+      if(s.find(trird) != s.end()) {
+        vector<int> trip = {nums[i], nums[j], trird};
+        sort(trip.begin(), trip.end());
+
+        uniqueTrip.insert(trip);
+      }
+
+      s.insert(nums[j]);
     }
-    cout << endl;
   }
+
+  vector<vector<int>> ans(uniqueTrip.begin(), uniqueTrip.end());
+  return ans;
+}
+
+int dist(vector<int>& nums) {
+  int n = nums.size();
+  vector<int> ans;
+  int v = 0;
+  for(int i=0; i<n; i++) {
+    int sum = 0;
+    for(int j=0; j<n; j++) {
+      if(nums[i] == nums[j]) {
+        sum += abs(i-j);
+      }else{
+        break;
+      }
+    }
+    int v = sum;
+  }
+  return v;
+}
+
+int addDig(int n) {
+  int sum = 1+(n-1)%9;
+  return sum;
+}
+
+int addOne(vector<int>& nums) {
+  int n = nums.size();
+
+  for(int i=n-1; i>=0; i--) {
+    if()
+  }
+}
+int main() {
+  cout << addDig(38);
   return 0;
 }
