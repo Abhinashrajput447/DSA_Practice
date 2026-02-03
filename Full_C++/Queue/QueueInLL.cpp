@@ -86,7 +86,7 @@ int main() {
   q.push(50);
   q.push(60);
 
-  display(q.getHead());
+  // display(q.getHead());
   // q.pop();
   // q.display();
   // q.pop();
@@ -95,9 +95,12 @@ int main() {
   // q.pop();
   // cout << q.front()  << "\n";
 
-  // while(!q.isEmpty()) {
-  //   cout << q.front() << "-->";
-  //   q.pop();
-  // }
+  int cnt = 0;
+  while(!q.isEmpty()) {
+    // cout << q.front() << "-->";
+    cnt++;
+    q.pop();
+  }
+  cout << cnt;
   return 0;
 }
