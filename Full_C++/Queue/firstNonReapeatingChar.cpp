@@ -3,10 +3,11 @@
 #include <queue>
 using namespace std;
 
-void firstNonRepeat(string str) {
+char firstNonRepeat(string str) {
   int n = str.size();
   queue<char> Q;
-  int freq[26] = {0};
+  // int freq[26] = {0};
+  vector<int> freq(26, 0);
 
   for(int i=0; i<n; i++) {
     char ch = str[i];
@@ -18,16 +19,21 @@ void firstNonRepeat(string str) {
       Q.pop();
     }
 
-    if(Q.empty()) {
-      cout << "-1\n";
-    }else{
-      cout << Q.front();
-    }
   }
+
+  // if(!Q.empty()) {
+  //   return Q.front();
+  // }
+  // return '#';
+
+  return Q.empty() ? '#' : Q.front(); 
 }
 
+
+
 int main() {
-  string str = "aabccxb";
-  firstNonRepeat(str);
+  string str = "aabccxxb";
+  // firstNonRepeat(str);
+  cout << firstNonRepeat(str);
   return 0;
 }
