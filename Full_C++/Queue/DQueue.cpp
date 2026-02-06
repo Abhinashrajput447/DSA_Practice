@@ -61,16 +61,16 @@ public:
 int main() {
   Stack2 s;
   
-  for(int i=1; i<=5; i++) {
-    s.push(i);
-  }
+  // for(int i=1; i<=5; i++) {
+  //   s.push(i);
+  // }
 
   // cout << s.top();
   // s.pop();
   // cout << s.top();
-  for(int i=0; i<5; i++) {
-    cout << s.top() << " ";
-    s.pop();
-  }
+  // for(int i=0; i<5; i++) {
+  //   cout << s.top() << " ";
+  //   s.pop();
+  // }
   return 0;
 }
