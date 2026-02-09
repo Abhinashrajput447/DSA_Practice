@@ -6,6 +6,8 @@
 #include <algorithm>
 using namespace std;
 
+//Checking a string is palindrome or not with all lowerCase 
+// Time Complesity => O(n)
 bool isPalindrome(string s) {
   string ans = "";
   for(char c : s) {
@@ -19,16 +21,28 @@ bool isPalindrome(string s) {
   return rev == orgStr;
 }
 
+// Creating a swap Function
+// Time Complesity => O(n)
+void swap2(char &a, char &b) {
+  char t = a;
+  a = b;
+  b = t;
+}
+
+//Reversing a string
+// Time Complesity => O(n)
 void reverseString(string& s) {
   int i=0, j=s.size()-1;
 
   while(i < j) {
-    swap(s[i], s[j]);
+    swap2(s[i], s[j]);
     i++;j--;
   }
 }
 
-void reverseChar(vector<char>& s) {
+// Reversing a char => Like String type
+// Time Complesity => O(n)
+void reverseChar(vector<char>& s) { 
   int i=0, j=s.size()-1;
 
   while(i < j) {
@@ -36,6 +50,8 @@ void reverseChar(vector<char>& s) {
   }
 }
 
+//Move All Zeros End of the array
+// Time Complesity => O(n) 
 void moveZero(vector<int>& nums) {
   int n = nums.size();
   int cnt = 0;
@@ -56,6 +72,17 @@ void moveZero(vector<int>& nums) {
   nums = ans;
 }
 
+//Print the array 
+// Time Complesity => O(n)
+void print(vector<int> nums) {
+  for(int i=0; i<nums.size(); i++) {
+    cout << nums[i] << " ";
+  }
+  cout << "\n";
+}
+
+//Removing Duplicate Element from the array
+// Time Complesity => O(n)
 int removeDuplicate(vector<int>& nums) {
   int n = nums.size();
   int k = 0;
@@ -78,8 +105,9 @@ int removeDuplicate(vector<int>& nums) {
   return k;
 }
 
-
-int removeDuplicate2(vector<int>& nums) {
+//Removing all the Duplicate Element from the array using "set"
+// Time Complesity => O(n) , Space Complexity => O(n)
+vector<int> removeDuplicate2(vector<int>& nums) {
   unordered_set<int> seen;
   vector<int> ans;
 
@@ -90,9 +118,11 @@ int removeDuplicate2(vector<int>& nums) {
       ans.push_back(nums[i]);
     }
   }
-  return ans.size();
+  return ans;
 }
 
+//Rotating the nonNeg number by K pos from "Left"
+// Time Complesity => O(n) and Space Complexity => O(n)
 vector<int> rotateNonneg(vector<int>& nums, int k) {
   vector<int> nonNeg;
   for(int x : nums) {
@@ -120,22 +150,24 @@ vector<int> rotateNonneg(vector<int>& nums, int k) {
   return nums;
 }
 
+//Three sum brute force code 
+// Time Complesity => O(n^3*NlongN) => O(n^3) and Space Complexity => O(n)
 vector<vector<int>> threeSum(vector<int>& nums) {
   int n = nums.size();
-  vector<vector<int>> ans;
+  vector<vector<int>> ans;  
 
-  set<vector<int>> s;
+  set<vector<int>> s; // We want only unique elements
   for(int i=0; i<n; i++) {
     for(int j=i+1; j<n; j++) {
-      for(int k=j+1; j<n; j++) {
+      for(int k=j+1; k<n; k++) {
         if(nums[i]+nums[j]+nums[k] == 0) {
           vector<int> trip = {nums[i], nums[j], nums[k]};
-          sort(trip.begin(), trip.end());
+          sort(trip.begin(), trip.end()); // For unique element
 
 
-          if(s.find(trip) == s.end()) {
-            s.insert(trip);
-            ans.push_back(trip);
+          if(s.find(trip) == s.end()) { // Checking the elements are not reapeating na 
+            s.insert(trip);             // if Not reapeating => insert the trip elements into the set 
+            ans.push_back(trip);        // and after this push the elements into the ans vactor 
           }
         }
       }
@@ -143,6 +175,9 @@ vector<vector<int>> threeSum(vector<int>& nums) {
   }
   return ans;
 }
+
+//Three sum Better Approach code 
+// Time Complesity => O(n^2*NlongN) => O(n^2) and Space Complexity => O(n)
 
 vector<vector<int>> threeSum2(vector<int>& nums) {
   int n = nums.size();
@@ -153,10 +188,10 @@ vector<vector<int>> threeSum2(vector<int>& nums) {
     set<int> s;
 
     for(int j=i+1; j<n; j++) {
-      int trird = tar - nums[j];
+      int third = tar - nums[j];
 
-      if(s.find(trird) != s.end()) {
-        vector<int> trip = {nums[i], nums[j], trird};
+      if(s.find(third) != s.end()) {
+        vector<int> trip = {nums[i], nums[j], third};
         sort(trip.begin(), trip.end());
 
         uniqueTrip.insert(trip);
@@ -169,6 +204,7 @@ vector<vector<int>> threeSum2(vector<int>& nums) {
   vector<vector<int>> ans(uniqueTrip.begin(), uniqueTrip.end());
   return ans;
 }
+
 
 int dist(vector<int>& nums) {
   int n = nums.size();
@@ -200,7 +236,22 @@ int addOne(vector<int>& nums) {
     
   }
 }
+
 int main() {
-  cout << addDig(38);
+  vector<int> nums = {1,5,2,3,6,7,8};
+  // vector<vector<int>> ans = threeSum2(nums);
+
+  // cout << "[";
+  // for(auto &trip : ans) {
+  //   cout << "[";
+  //   for(int x : trip) {
+  //     cout << x << " ";
+  //   }
+  //   cout << "]";
+  // }
+  // cout << "]\n";
+
+  cout << dist(nums);
+  
   return 0;
 }
