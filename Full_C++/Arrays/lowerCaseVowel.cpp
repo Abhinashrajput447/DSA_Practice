@@ -3,6 +3,8 @@
 #include <vector>
 using namespace std;
 
+//Counting the Lovercase volwel charector in string
+//Time complexity => O(n)
 int cntLowerCaseVowel(string s) {
   int cnt = 0;
   for(int i=0; i<s.length(); i++) {
@@ -13,6 +15,8 @@ int cntLowerCaseVowel(string s) {
   return cnt;
 }
 
+// swapping one different element char from string
+// Time complexity => O(n)
 bool swapOne(string s1, string s2) {
   int n = s1.length();
   if(s1 == s2) return true;
@@ -25,7 +29,7 @@ bool swapOne(string s1, string s2) {
   }
 
   if(diff.size() != 2) return false;
-  return s1[diff[0]] ==  s2[diff[1]] &&       s1[diff[1]] ==  s2[diff[0]];
+  return s1[diff[0]] ==  s2[diff[1]] && s1[diff[1]] ==  s2[diff[0]];
 }
 
 int main() {

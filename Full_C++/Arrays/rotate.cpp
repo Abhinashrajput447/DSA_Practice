@@ -2,6 +2,8 @@
 #include<algorithm>
 using namespace std;
 
+//Rotate the array by K position from right
+//Time Compleity => O(n)
 void rotate(int *arr, int n, int k) {
   k = k%n;
   reverse(arr, arr+n);

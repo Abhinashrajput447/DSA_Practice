@@ -6,49 +6,42 @@ int main()
 {
     auto start = chrono::high_resolution_clock::now();
 
-    int n;
-    cin >> n;
-
-    // for(int i=1; i<=n; i++) {
-    //   if(i % 3 == 0 && i % 5 == 0) {
-    //     // cout << "fizzBUzz" << endl;
-    //   }else if(i % 3 == 0) {
-    //     // cout << "fizz" << endl;
-    //   }else if(i % 5 == 0) {
-    //     // cout << "Buzz" << endl;
-    //   }else{
-    //     // cout << i << endl;
-    //   }
-    // }
     // int n;
     // cin >> n;
 
-    int c3 = 0, c5 = 0;
+    // This code is Correct but you don't need to use %, /, * operator 
+    // for(int i=1; i<=n; i++) {
+    //   if(i % 3 == 0 && i % 5 == 0) {
+    //     cout << "fizzBUzz" << endl;
+    //   }else if(i % 3 == 0) {
+    //     cout << "fizz" << endl;
+    //   }else if(i % 5 == 0) {
+    //     cout << "Buzz" << endl;
+    //   }else{
+    //     cout << i << endl;
+    //   }
+    // }
 
-    for (int i = 1; i <= n; i++)
-    {
+
+    int n;
+    cin >> n;
+    int c3 = 0, c5 = 0;
+    for (int i = 1; i <= n; i++) {
         c3++;
         c5++;
 
-        if (c3 == 3 && c5 == 5)
-        {
-            // cout << "fizzbuzz" << endl;
+        if (c3 == 3 && c5 == 5){
+            cout << "fizzbuzz" << endl;
             c3 = 0;
             c5 = 0;
-        }
-        else if (c5 == 5)
-        {
-            // cout << "buzz" << endl;
+        } else if (c5 == 5) {
+            cout << "buzz" << endl;
             c5 = 0;
-        }
-        else if (c3 == 3)
-        {
-            // cout << "fizz" << endl;
+        }else if(c3 == 3){
+            cout << "fizz" << endl;
             c3 = 0;
-        }
-        else
-        {
-            // cout << i << endl;
+        }else {
+            cout << i << endl;
         }
     }
 

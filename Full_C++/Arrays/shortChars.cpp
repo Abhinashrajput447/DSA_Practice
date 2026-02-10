@@ -24,7 +24,7 @@ void charSort(char* ch, int n) {
 
 
 int main() {
-  char ch[6] = {'a','c','d','l','p','t'};
+  char ch[6] = {'a', 'r'};
   charSort(ch, 6);
   return 0;
 }

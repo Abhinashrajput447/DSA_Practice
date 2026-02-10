@@ -3,7 +3,9 @@
 #include <algorithm>
 using namespace std;
 
-int secLar(vector<int>& arr) {
+// Finding the second largest number 
+// Time Complexity => O(n)
+int secondLargest(vector<int>& arr) {
   int lar1 = INT32_MIN, lar2 = INT32_MIN;
   for(int x : arr) {
     if(lar1 < x) {
@@ -20,6 +22,8 @@ int secLar(vector<int>& arr) {
   return lar2;
 }
 
+// Checking the number is prime or not
+// Time Complexity => O(n)
 bool prime(int n){
   for(int i=2; i<n; i++) {
     if(n%i == 0) {
@@ -31,12 +35,13 @@ bool prime(int n){
   return true;
 }
 
-int fib(int n) {
+// Fibbonacci Number
+// Time Complexity => O(N!)
+int fibnacci(int n) {
   if(n == 0) return 0;
-
-  return fib(n-1)+fib(n-2);
+  return fibnacci(n-1)+fibnacci(n-2);
 }
 
 int main() {
-  cout << fib(7);
+  cout << fibnacci(7);
 }
