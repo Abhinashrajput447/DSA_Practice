@@ -54,10 +54,34 @@ int longStrAtMostKDistChar(string str, int k) {
   return ans;
 } 
 
+
+/* 424. Longest Repeating Character Replacement 
+Given a string and we need to check whih cher is repeating more after replacing K char beteen 
+them ex => s = "ABBA", k = 2 => if we replace "BA then ans will 4 => "AAAA" or same for "BBBB"
+Time complecity => O(n), Space Comlexity => O(1){only 26 letter storing}*/
+
+int characterReplacement(string s, int k) {
+  vector<int> freq(26, 0);
+  int maxFreq = 0, left = 0, maxLen = 0;
+
+  for(int right=0; right<s.size(); right++) {
+    freq[s[right]-'a']++;
+
+    maxFreq = max(maxFreq, freq[s[right]-'a']);
+
+    while ((right - left + 1) - maxFreq > k) {
+      freq[s[left] - 'a']--;
+      left++;
+    }
+    maxLen = max(maxLen, right-left+1);
+  }
+  return maxLen;
+}
 int main() {
   // vector<int> nums = {1, 2, 3, 1, 2, 3, 2, 2, 8, 9, 5};
   // cout << longArrAtMostKDisNum(nums, 4);
-  string str = "abacbabaaabac";
-  cout << longStrAtMostKDistChar(str, 2);
+  string str = "bbbinasha";
+  cout << characterReplacement(str, 2);
+  // cout << longStrAtMostKDistChar(str, 2);
   return 0;
 }
