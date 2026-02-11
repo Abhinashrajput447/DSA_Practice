@@ -2,8 +2,29 @@
 #include <vector>
 #include <unordered_map>
 #include <limits>
+#include <unordered_set>
 #include <algorithm>
 using namespace std;
+
+/*Brute Force Solution => apply set for */
+
+int FruitIntoBaskets2(vector<int>& fruits) {
+  int ans = 0, n = fruits.size();
+
+  for(int i=0; i<n; i++) {
+    unordered_set<int> st;
+    for(int j=i; j<n; j++) {
+      st.insert(fruits[j]);
+
+      if(st.size() > 2) {
+        break;
+      }
+      ans = max(ans, j-i+1);
+    }
+  }
+  return ans;
+}
+
 
 /*Optimal Solution => Apply Two Pointer, Map, Sliding Window
 Take two Pointer left and right map[fruits[right]]++ check
@@ -35,6 +56,6 @@ int FruitIntoBaskets(vector<int>& fruits) {
 
 int main() {
   vector<int> nums = {1, 2, 1, 5, 5, 2, 1};
-  cout << FruitIntoBaskets(nums);
+  cout << FruitIntoBaskets2(nums);
   return 0;
 }
