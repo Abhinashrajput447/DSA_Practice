@@ -65,9 +65,45 @@ void selectionSort(int arr[], int n ) {
   print(arr, n);
 }
 
+//Swap function pass by reference
+void swap(int *a, int *b) {
+  int t = *a;
+  *a = *b;
+  *b = t;
+}
+
+//Partition Functino 
+int partition(int arr[], int low, int high) {
+  //Choose the pivot
+  int pivot = arr[high];
+
+  // Index of smaller element and indicates 
+  // the right position of pivot found so far
+  int i = low - 1;
+
+  for(int j=low; j<=high-1; j++) {
+    if(arr[j] < pivot) {
+      i++;
+      swap(&arr[i], &arr[j]);
+    }
+  }
+  swap(&arr[i+1], &arr[high]);
+  return i+1;
+}
+
+void quickSort(int arr[], int low, int high) {
+  if(low < high) {
+    int pi = partition(arr, low, high);
+
+    quickSort(arr, low, pi-1);
+    quickSort(arr, pi+1, high);
+  }
+}
+
 int main() {
   int n = 10;
   int arr[n] = {3,6,2,1,8,7,4,5,3,1};
-  countSort(arr, n);
+  quickSort(arr, 0, n-1);
+  print(arr, n);
   return 0;
 }
