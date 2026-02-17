@@ -5,6 +5,7 @@ void print(int *arr, int n) {
   for(int i=0; i<n; i++) {
     cout << arr[i] << " ";
   }
+  cout << endl;
 }
 
 void countSort(int *arr, int n) {
@@ -56,13 +57,16 @@ void selectionSort(int arr[], int n ) {
     int minIdx = i;
 
     for(int j=i+1; j<n; j++) {
-      if(arr[j] > arr[minIdx]) {
+      if(arr[j] < arr[minIdx]) {
         minIdx = j;
       }
+      cout <<"i : "<< i << " -> " << "j : "<< j << " -> ";
+      print(arr, n);
     }
-    swap(arr[i], arr[minIdx]);
+    swap(arr[i], arr[minIdx]); 
+    cout << "[ " << arr[i] << ", " << arr[minIdx] << " ]\n";cout << endl;
   }
-  print(arr, n);
+  // print(arr, n);
 }
 
 //Swap function pass by reference
@@ -101,9 +105,10 @@ void quickSort(int arr[], int low, int high) {
 }
 
 int main() {
-  int n = 10;
-  int arr[n] = {3,6,2,1,8,7,4,5,3,1};
-  quickSort(arr, 0, n-1);
-  print(arr, n);
+  int n = 5;
+  int arr[n] = {3, 2, 4, 1, 5};
+  // quickSort(arr, 0, n-1);
+  // print(arr, n);
+  selectionSort(arr, n);
   return 0;
 }
