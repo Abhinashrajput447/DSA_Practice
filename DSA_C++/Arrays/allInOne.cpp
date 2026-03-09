@@ -229,16 +229,35 @@ int addDig(int n) {
   return sum;
 }
 
-int addOne(vector<int>& nums) {
-  int n = nums.size();
+// int addOne(vector<int>& nums) {
+//   int n = nums.size();
 
-  for(int i=n-1; i>=0; i--) {
+//   for(int i=n-1; i>=0; i--) {
     
+//   }
+// }
+
+//sum of array elements
+int sum(vector<int>& nums) {
+  int sum = 0;
+  for(int i=0; i<nums.size(); i++) {
+    sum = sum*10+nums[i];
   }
+  return sum;
 }
 
+
+//find pairs in given pairs
+int searchPairs(vector<int> arr, int a, int b) {
+  // vector<int> arr
+  for(int )
+
+}
 int main() {
-  vector<int> nums = {1,5,2,3,6,7,8};
+  vector<int> nums = {1,5, 2};
+  cout << sum(nums);
+  cout << endl;
+
   // vector<vector<int>> ans = threeSum2(nums);
 
   // cout << "[";
@@ -251,7 +270,7 @@ int main() {
   // }
   // cout << "]\n";
 
-  cout << dist(nums);
+  // cout << dist(nums);
   
   return 0;
 }

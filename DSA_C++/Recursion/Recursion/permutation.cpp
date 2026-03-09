@@ -63,7 +63,7 @@ void permute2(vector<int>& nums, int idx) {
 
 
 int main() {
-  string str = "abc";
+  string str = "00";
   string ans = "";
   permute3(str, ans);
   // vector<int> nums = {1, 2, 3};
