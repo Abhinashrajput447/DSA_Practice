@@ -3,20 +3,21 @@
 using namespace std;
 
 int main() {
-  int n;
-  cin >> n;
+  int n = 6;
+  // cin >> n;
   if(n<2) {
     cout << "Array must atlest grater than two\n";
     return 0;
   }
 
-  int min1 = INT32_MAX;
-  int min2 = INT32_MAX;
-  int arr[n];
+  int min1 = 100000;
+  int min2 = 100000;
+  int arr[n] = {1, 1, 1, 1};
 
-  for(int i=0; i<n; i++) {
-    cin >> arr[i];
-  }
+  // for(int i=0; i<n; i++) {
+  //   cin >> arr[i];
+  // }
+
 
   for(int i=0; i<n; i++) {
     if(arr[i] < min1) {
@@ -29,11 +30,11 @@ int main() {
 
   cout << min1 << endl ;
 
-  if(min2 == INT32_MAX) {
+  if(min2 == 100000) {
     cout << "All elements are same";
     return 0;
   }else{
-    cout << min2 ;
+    cout << min2 << endl;
   }
   return 0;
 }

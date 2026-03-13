@@ -26,7 +26,7 @@ public:
             return;
         }
 
-        int lc = 2*i+1; //lc = left chilf
+        int lc = 2*i+1; //lc = left child
         int rc = 2*i+2; //rc = right child
 
         int maxIdx = i;
