@@ -21,10 +21,10 @@ public:
     void print() {
         for(int u=0; u<V; u++) {
             list<int> neighbors = l[u];
-            cout << u << " : ";
+            cout << u << " -> ";
 
             for(int v : neighbors) {
-                cout << v << " ";
+                cout << v << ", ";
             }
             cout << endl;
         }
@@ -34,7 +34,7 @@ public:
     // Main logic of DFS
     void dfs(int u, vector<bool>& vis) { // O(V+E)
         vis[u] = true;
-        cout << u << " ";
+        cout << u << " -> ";
 
         list<int> neighbors = l[u];
         for(int v : neighbors) {
@@ -47,7 +47,7 @@ public:
     // 2nd way to create DFS
     void dfsHelper(int u, vector<bool>& vis) { // O(V+E)
         vis[u] = true;
-        cout << u << " ";
+        // cout << u << " -> ";
 
         list<int> neighbors = l[u];
         for(int v : neighbors) {
@@ -80,7 +80,7 @@ int main() {
     // vector<bool> vis(7, false);
     // graph.dfs(0, vis);
 
-    graph.dfs2();
+    graph.print();
     cout << endl;
     return 0;
 }
