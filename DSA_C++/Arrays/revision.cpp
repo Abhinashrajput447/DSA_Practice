@@ -1,9 +1,10 @@
-#include <iostream>
-#include <vector>
-#include <string>
-#include <unordered_set>
-#include <unordered_map>
-#include <algorithm>
+#include <bits/stdc++.h>
+// #include <iostream>
+// #include <vector>
+// #include <string>
+// #include <unordered_set>
+// #include <unordered_map>
+// #include <algorithm>
 using namespace std;
 
 // chaeck duplicate is present or not 
@@ -50,9 +51,26 @@ void ck(vector<int>& nums) {
 }
 
 int main() {
-  // vector<int> nums = {1, 2, 3, 4};
-  vector<int> nums = {1, 2,3, 1, 5, 6, 7};
-  // cout << check2(nums);
-  ck(nums);
+  // Take 5 input name and prinout them 
+  // string name1, name2, name3, name4, name5;
+  // // cin >> name1 >> name2 >> name3 >> name4 >> name5;
+
+  
+  // getline(cin, name1);
+  // getline(cin, name2);
+  // getline(cin, name3);
+  // getline(cin, name4);
+  // getline(cin, name5);
+
+  // cout << name1 << name2 << name3 << name4 << name5 << endl;
+  vector<string> name(5);
+  for(int i=0; i<5; i++) {
+    getline(cin, name[i]);
+  }
+
+  for(int i=0; i<5; i++) {
+    cout << name[i] << " ";
+  }
+  cout << endl;
   return 0;
 }
