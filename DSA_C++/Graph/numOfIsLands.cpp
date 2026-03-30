@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <climits>
 using namespace std;
 
 void dfs(vector<vector<char>>& grid, int r, int c) {
@@ -35,15 +36,41 @@ int nOfIsLand(vector<vector<char>>& grid) {
     return landCnt;
 }
 
+// Maximum length of island
+int isLand(vector<vector<char>>& grid, int r, int c) {
+    // Base case: water or bound
+    if(r < 0 || c < 0 || r >= grid.size() || c >= grid[0].size() || grid[r][c] == '0') {
+        return 0;
+    }
+
+    grid[r][c] = '0';
+
+    // Explore all 4 directions
+    return (1 + isLand(grid, r+1, c) + isLand(grid, r-1, c)+
+    isLand(grid, r, c+1) + isLand(grid, r, c-1));
+} 
+
+
+int maxLenOfIsLand(vector<vector<char>>& grid) {
+    int maxLen = 0;
+    for(int i=0; i<grid.size(); i++) {
+        for(int j=0; j<grid[0].size(); j++) {
+            if(grid[i][j] == '1') {
+                maxLen = max(maxLen, isLand(grid, i, j));
+            }
+        }
+    }
+    return maxLen;
+}
 
 int main() {
     vector<vector<char>> grid = {
         {'1', '1', '0', '0', '1'},
         {'0', '1', '0', '1', '1'},
-        {'1', '1', '1', '1', '1'},
+        {'1', '1', '0', '1', '1'},
         {'0', '0', '0', '0', '1'}
     };
 
-    cout << nOfIsLand(grid) << endl;
+    cout << maxLenOfIsLand(grid) << endl;
     return 0;
 }
